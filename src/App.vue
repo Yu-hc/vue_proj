@@ -1,4 +1,33 @@
-<script setup>
+<template>
+  <div>
+    Redis Data:
+    <p>{{ redisData }}</p>
+    <button @click="fetchData">Fetch Data</button>
+  </div>
+</template>
+
+<script>
+import axios from 'axios';
+
+export default {
+  data() {
+    return {
+      redisData: '',
+    };
+  },
+  methods: {
+    fetchData() {
+      axios.get('http://localhost:3000').then(response => {
+        this.redisData = response;
+      });
+    },
+  },
+};
+</script>
+
+
+
+<!-- <script setup>
 import { RouterLink, RouterView } from 'vue-router'
 import HelloWorld from './components/HelloWorld.vue'
 </script>
@@ -82,4 +111,4 @@ nav a:first-of-type {
     margin-top: 1rem;
   }
 }
-</style>
+</style> -->
